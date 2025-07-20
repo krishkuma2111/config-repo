@@ -1,1 +1,23 @@
-# department service yaml
+server:
+  port: 8082
+spring:
+  application:
+    name: department-service
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/postgres
+    username: postgres
+    password: kk123
+  jpa:
+    hibernate: 
+      show-sql: true
+      format-sql: true
+      ddl-auto: update
+    properties:
+      hibernate: org.hibernate.dialect.PostgreSQLDialect
+eureka:
+  instance: localhost
+  prefer-ip-address: true
+  client:
+    register-with-eureka: true
+    fetch-registry: true

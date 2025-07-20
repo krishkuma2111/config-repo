@@ -4,7 +4,7 @@ spring:
   application:
     name: department-service
   profiles:
-    active: dev
+    active: dev	
   datasource:
     driver-class-name: org.postgresql.Driver
     url: jdbc:postgresql://localhost:5432/postgres
@@ -23,6 +23,3 @@ eureka:
   client:
     register-with-eureka: true
     fetch-registry: true
-cloud:
-  config:
-    http://localhost:8888

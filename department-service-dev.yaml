@@ -3,9 +3,9 @@ server:
 spring:
   application:
     name: department-service
-    config:
-      activate:
-        on-profile: dev    
+  config:
+    activate:
+      on-profile: dev    
   cloud:
     config:
       uri: http://localhost:8888

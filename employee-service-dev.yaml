@@ -1,0 +1,47 @@
+app:
+  departmentURL: http://localhost:8082/departments
+server:
+  port: 8081
+spring:
+  application:
+    name: employee-service
+  cloud:
+    config:
+      uri: http://localhost:8888
+  profiles:
+    active: dev	
+    activate:
+      on-profile: dev
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/postgres 
+    username: postgres
+    password: kk123
+  jpa:
+    hibernate:
+      ddl-auto: update
+      show-sql: true
+      format-sql: true
+    properties:
+      hibernate: org.hibernate.dialect.PostgreSQLDialect
+eureka:
+  instance: localhost
+  prefer-ip-address: true
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+resilience4j:
+  circuitbreaker:
+    instances:
+      employee-service:
+        slidingWindowSize: 5
+        register-health-indicator: true
+        ringBufferSizeInClosedState: 5
+        ringBufferInHalfOpenState: 5
+        waitDurationInOpenState: 4s
+        failureRateThreshold: 5
+        recordExceptions:
+          - org.springframework.web.client.HttpServerErrorException
+          - java.io.IOException
+          - java.util.concurrent.TimeoutException
+          - org.springframework.web.client.ResourceAccessException

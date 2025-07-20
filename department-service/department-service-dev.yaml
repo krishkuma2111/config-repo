@@ -3,11 +3,13 @@ server:
 spring:
   application:
     name: department-service
-  profiles:
-    active: dev	
   cloud:
     config:
       uri: http://localhost:8888
+  profiles:
+    active: dev	
+    activate:
+      on-profile: dev
   datasource:
     driver-class-name: org.postgresql.Driver
     url: jdbc:postgresql://localhost:5432/postgres

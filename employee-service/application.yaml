@@ -17,12 +17,16 @@ spring:
       format-sql: true
     properties:
       hibernate: org.hibernate.dialect.PostgreSQLDialect
+  cloud:
+    config:
+      uri: http://localhost:8888
 eureka:
   instance: localhost
   prefer-ip-address: true
   client:
     register-with-eureka: true
     fetch-registry: true
+
 resilience4j:
   circuitbreaker:
     instances:
@@ -38,3 +42,4 @@ resilience4j:
           - java.io.IOException
           - java.util.concurrent.TimeoutException
           - org.springframework.web.client.ResourceAccessException
+

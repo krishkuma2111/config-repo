@@ -5,6 +5,8 @@ server:
 spring:
   application:
     name: employee-service
+  profiles:
+    active: dev
   datasource:
     driver-class-name: org.postgresql.Driver
     url: jdbc:postgresql://localhost:5432/postgres 

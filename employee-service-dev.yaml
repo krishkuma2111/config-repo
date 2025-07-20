@@ -7,9 +7,9 @@ spring:
     name: employee-service
   cloud:
     config:
+      activate:
+        on-profile: dev
       uri: http://localhost:8888
-  profiles:
-    active: dev	
   datasource:
     driver-class-name: org.postgresql.Driver
     url: jdbc:postgresql://localhost:5432/postgres 

@@ -5,10 +5,10 @@ server:
 spring:
   application:
     name: employee-service
+  config:
+    activate:
+      on-profile: dev    
   cloud:
-    config:
-      activate:
-        on-profile: dev
       uri: http://localhost:8888
   datasource:
     driver-class-name: org.postgresql.Driver

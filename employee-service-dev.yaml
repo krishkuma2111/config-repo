@@ -1,7 +1,7 @@
 app:
   departmentURL: http://localhost:8082/departments
 server:
-  port: 8081
+  port: 8084
 spring:
   application:
     name: employee-service

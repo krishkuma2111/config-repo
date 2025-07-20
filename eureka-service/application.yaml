@@ -1,1 +1,15 @@
-# eureka server service application yaml file
+server:
+  port: 8761
+  
+spring:
+  application:
+    name: eureka-service-registry 
+  profiles:
+    active: native
+eureka:
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+    service-url: 
+      defaultZone: http://localhost:8761/eureka
+    

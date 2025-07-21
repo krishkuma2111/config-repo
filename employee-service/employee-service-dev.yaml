@@ -1,17 +1,18 @@
-app:
-  departmentURL: http://localhost:8082/departments
-server:
-  port: 8081
 spring:
   application:
     name: employee-service
   cloud:
     config:
       uri: http://localhost:8888
-  profiles:
-    active: dev	
+server:
+  port: 8084     
+app:
+  departmentURL: http://localhost:8082/departments
+---
+spring:
+  config:
     activate:
-      on-profile: dev
+      on-profile: dev    
   datasource:
     driver-class-name: org.postgresql.Driver
     url: jdbc:postgresql://localhost:5432/postgres 
@@ -30,6 +31,8 @@ eureka:
   client:
     register-with-eureka: true
     fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka
 resilience4j:
   circuitbreaker:
     instances:

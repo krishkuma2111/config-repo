@@ -3,6 +3,8 @@ spring:
     name: department-service
   profiles:
     active: dev
+  config:
+    import: configserver:   # <-- 🔥 Required for Spring Boot 3.x    
   cloud:
     config:
       uri: http://localhost:8888

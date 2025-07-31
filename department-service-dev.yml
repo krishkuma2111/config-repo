@@ -16,14 +16,37 @@ server:
 
 eureka:
   client:
-    service-url:
-      defaultZone: http://localhost:8761/eureka/
     register-with-eureka: true
     fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
     registry-fetch-interval-seconds: 5
-    initial-instance-info-replication-interval-seconds: 10
 
+# THIS prevents crashing if Eureka is not reachable initially
   instance:
     prefer-ip-address: true
-    lease-renewal-interval-in-seconds: 30
-    lease-expiration-duration-in-seconds: 90
+
+spring:
+  cloud:
+    loadbalancer:
+      retry:
+        enabled: true
+
+# IMPORTANT: Don't fail if Eureka is down
+# This disables fatal startup if discovery fails
+feign:
+  client:
+    config:
+      default:
+        connectTimeout: 5000
+        readTimeout: 5000
+  okhttp:
+    enabled: true
+
+# This tells Eureka to try but not crash if unavailable
+spring:
+  cloud:
+    discovery:
+      enabled: true
+    config:
+      fail-fast: false

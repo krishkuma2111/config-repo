@@ -49,4 +49,3 @@ feign:
         readTimeout: 5000
   okhttp:
     enabled: true
-
